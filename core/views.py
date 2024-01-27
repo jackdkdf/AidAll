@@ -33,7 +33,7 @@ class PostingOfTheDayView(DetailView):
 class PostingCreateView(CreateView):
     model = Posting
     fields = "__all__"
-    success_url = reverse_lazy('recipe-list')
+    success_url = reverse_lazy('posting-list')
 
 class PostingUpdateView(UpdateView):
     model = Posting
@@ -41,4 +41,4 @@ class PostingUpdateView(UpdateView):
 
 class PostingDeleteView(DeleteView):
     model = Posting
-    success_url = reverse_lazy('recipe-list')
+    success_url = reverse_lazy('posting-list')

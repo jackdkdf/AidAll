@@ -133,7 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # AllAuth settings
 
-ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy('recipe-list')
+ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy('posting-list')
 
 load_dotenv()
 SOCIALACCOUNT_PROVIDERS = {
