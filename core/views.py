@@ -10,7 +10,7 @@ from .models import Posting
 class PostingListView(LoginRequiredMixin, ListView):
     model = Posting
     paginate_by = 15
-    template_name = "/pages/posting_list.html"
+    template_name = "/core/posting_list.html"
 
 # Listview with queryset filtered by user's search
 class PostingSearchView(LoginRequiredMixin, ListView):
