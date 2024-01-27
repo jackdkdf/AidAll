@@ -1,0 +1,125 @@
+{% load static %}
+
+<head>
+    <title>RecipeShop</title>
+    {% block bscss %} {% endblock %}
+</head>
+
+<body data-bs-theme="miami" style="overscroll-behavior: none">
+    <div
+        class="container-fluid"
+        style="
+            background: linear-gradient(
+                90deg,
+                var(--bs-secondary-bg),
+                var(--bs-emphasis-color)
+            );
+        "
+    >
+        <header
+            class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 ps-3 pe-6 border-bottom border-3"
+        >
+            <a
+                href="{% url 'recipe-list' %}"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+            >
+                <img
+                    class="bi me-2"
+                    width="40"
+                    height="40"
+                    src="{% static 'core/img/logo.png' %}"
+                />
+                <span class="fs-4">RecipeShop</span>
+            </a>
+
+            <!-- Check for current active url, set active navbar item -->
+            {% with request.resolver_match.url_name as url_name %}
+            <ul
+                class="nav nav-pills navbar-padding align-items-center justify-content-center"
+            >
+                <li class="nav-item">
+                    <a
+                        href="{% url 'recipe-list' %}"
+                        class="nav-link{% if url_name == 'recipe-list' %} active"
+                        aria-current="page"
+                        style="font-size: medium;{% endif %}{% if url_name == 'recipe-search' %} active"
+                        aria-current="page"
+                        style="font-size: medium;{% endif %}"
+                        >Recipes</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="{% url 'recipe-day' %}"
+                        class="nav-link{% if url_name == 'recipe-day' %} active"
+                        aria-current="page"
+                        style="font-size: medium;{% endif %}"
+                        >ROTD</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="{% url 'recipe-cart' %}"
+                        class="nav-link{% if url_name == 'recipe-cart' %} active"
+                        aria-current="page"
+                        style="font-size: medium;{% endif %}"
+                        >Cart (<span id="cart-count">0</span>)</a
+                    >
+                </li>
+                {% endwith %}
+                <li
+                    class="nav-item dropdown align-items-center justify-content-center ms-2"
+                >
+                    <a
+                        class="dropdown-toggle align-items-center link-body-emphasis text-decoration-none"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        <img
+                            src="{{ user.socialaccount_set.all.0.get_avatar_url }}"
+                            width="32"
+                            height="32"
+                            class="bi rounded-circle"
+                        />
+                    </a>
+                    <div
+                        class="dropdown-menu mt-3"
+                        aria-labelledby="navbarDropdownMenuLink"
+                        style="border: 1px solid black"
+                    >
+                        <a class="dropdown-item" href="{% url 'recipe-saved' %}"
+                            >Saved Recipes</a
+                        >
+                        <a class="dropdown-item" href="#">Edit Profile</a>
+                        <form
+                            method="post"
+                            action="{% url 'account_logout' %}"
+                            class="m-0"
+                        >
+                            {% csrf_token %} {% if redirect_field_value %}
+                            <input
+                                type="hidden"
+                                name="{{ redirect_field_name }}"
+                                value="{{ redirect_field_value }}"
+                            />
+                            {% endif %}
+                            <button class="dropdown-item" type="submit">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </header>
+    </div>
+
+    {% block content %}
+    <!-- Insert actual webpage content here -->
+    {% endblock %}
+</body>
+
+{% block scripts %} {% endblock %}
