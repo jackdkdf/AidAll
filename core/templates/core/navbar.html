@@ -20,7 +20,7 @@
             class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 ps-3 pe-6 border-bottom border-3"
         >
             <a
-                href="{% url 'recipe-list' %}"
+                href="{% url 'posting-list' %}"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
             >
                 <img
@@ -39,19 +39,19 @@
             >
                 <li class="nav-item">
                     <a
-                        href="{% url 'recipe-list' %}"
-                        class="nav-link{% if url_name == 'recipe-list' %} active"
+                        href="{% url 'posting-list' %}"
+                        class="nav-link{% if url_name == 'posting-list' %} active"
                         aria-current="page"
-                        style="font-size: medium;{% endif %}{% if url_name == 'recipe-search' %} active"
+                        style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active"
                         aria-current="page"
                         style="font-size: medium;{% endif %}"
-                        >Recipes</a
+                        >Postings</a
                     >
                 </li>
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a
-                        href="{% url 'recipe-day' %}"
-                        class="nav-link{% if url_name == 'recipe-day' %} active"
+                        href="{% url 'posting-day' %}"
+                        class="nav-link{% if url_name == 'posting-day' %} active"
                         aria-current="page"
                         style="font-size: medium;{% endif %}"
                         >ROTD</a
@@ -65,7 +65,7 @@
                         style="font-size: medium;{% endif %}"
                         >Cart (<span id="cart-count">0</span>)</a
                     >
-                </li>
+                </li> {% endcomment %}
                 {% endwith %}
                 <li
                     class="nav-item dropdown align-items-center justify-content-center ms-2"
@@ -91,9 +91,9 @@
                         aria-labelledby="navbarDropdownMenuLink"
                         style="border: 1px solid black"
                     >
-                        <a class="dropdown-item" href="{% url 'recipe-saved' %}"
+                        {% comment %} <a class="dropdown-item" href="{% url 'recipe-saved' %}"
                             >Saved Recipes</a
-                        >
+                        > {% endcomment %}
                         <a class="dropdown-item" href="#">Edit Profile</a>
                         <form
                             method="post"
