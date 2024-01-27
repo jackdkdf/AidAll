@@ -2,7 +2,6 @@ from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.conf import settings
 
 from .models import Posting
 
@@ -24,30 +23,22 @@ class PostingSearchView(LoginRequiredMixin, ListView):
         object_list = Posting.objects.filter(name__icontains=query)
         return object_list
 
-class RecipeDetailView(DetailView):
+class PostingDetailView(DetailView):
     model = Posting
 
 # TODO
-class RecipeOfTheDayView(DetailView):
+class PostingOfTheDayView(DetailView):
     model = Posting
 
-class RecipeCreateView(CreateView):
+class PostingCreateView(CreateView):
     model = Posting
     fields = "__all__"
     success_url = reverse_lazy('recipe-list')
 
-class RecipeUpdateView(UpdateView):
+class PostingUpdateView(UpdateView):
     model = Posting
     fields = "__all__"
 
-class RecipeDeleteView(DeleteView):
-    model = Recipe
+class PostingDeleteView(DeleteView):
+    model = Posting
     success_url = reverse_lazy('recipe-list')
-
-class RecipeSavedView(ListView):
-    model = Recipe
-    template_name = "/core/recipe_list.html"
-
-class RecipeCartView(ListView):
-    model = Recipe
-    template_name = "/core/recipe_list.html"
