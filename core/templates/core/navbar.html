@@ -1,7 +1,7 @@
 {% load static %}
 
 <head>
-    <title>RecipeShop</title>
+    <title>Aid Alll</title>
     {% block bscss %} {% endblock %}
 </head>
 
@@ -29,7 +29,7 @@
                     height="40"
                     src="{% static 'core/img/logo.png' %}"
                 />
-                <span class="fs-4">RecipeShop</span>
+                <span class="fs-4">Aid All</span>
             </a>
 
             <!-- Check for current active url, set active navbar item -->
@@ -59,8 +59,8 @@
                 </li>
                 <li class="nav-item">
                     <a
-                        href="{% url 'recipe-cart' %}"
-                        class="nav-link{% if url_name == 'recipe-cart' %} active"
+                        href="{% url 'Aid All-cart' %}"
+                        class="nav-link{% if url_name == 'Aid All-cart' %} active"
                         aria-current="page"
                         style="font-size: medium;{% endif %}"
                         >Cart (<span id="cart-count">0</span>)</a
@@ -91,8 +91,8 @@
                         aria-labelledby="navbarDropdownMenuLink"
                         style="border: 1px solid black"
                     >
-                        {% comment %} <a class="dropdown-item" href="{% url 'recipe-saved' %}"
-                            >Saved Recipes</a
+                        {% comment %} <a class="dropdown-item" href="{% url 'Aid All-saved' %}"
+                            >Saved Aid Alls</a
                         > {% endcomment %}
                         <a class="dropdown-item" href="#">Edit Profile</a>
                         <form

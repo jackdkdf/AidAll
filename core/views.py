@@ -16,7 +16,7 @@ class PostingListView(LoginRequiredMixin, ListView):
 class PostingSearchView(LoginRequiredMixin, ListView):
     model = Posting
     paginate_by = 15
-    template_name = "/core/recipe_list.html"
+    template_name = "/core/posting_list.html"
 
     def get_queryset(self):
         query = self.request.GET.get("q")
