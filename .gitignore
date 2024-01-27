@@ -2,3 +2,7 @@ db.sqlite3
 aidall/__pycache__
 core/__pycache__
 core/migrations/__pycache__
+core/static/core/node_modules
+core/static/core/package-lock.json
+.DS_Store
+aidall/.env
