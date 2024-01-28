@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import PostingListView, PostingCreateView, PostingDetailView, ApplicationsListView, ApplicationCreateView, PostingSearchView, PostingDeleteView
+from .views import PostingListView, PostingCreateView, PostingDetailView, ApplicationsListView, ApplicationCreateView, PostingSearchView, PostingDeleteView, apply
 
 urlpatterns = [
     path("posting/list", PostingListView.as_view(), name="posting-list"),
@@ -13,4 +13,5 @@ urlpatterns = [
     path("posting/<int:pk>/delete", PostingDeleteView.as_view(), name="posting-delete"),
     path("applications/list", ApplicationsListView.as_view(), name="application-list"),
     path("applications/create", ApplicationCreateView.as_view(), name="application-create"),
+    path("applications/create/ajax", apply, name="apply"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.db.models.query import QuerySet
+from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,8 +28,21 @@ class PostingDetailView(LoginRequiredMixin, DetailView):
 
 class PostingCreateView(LoginRequiredMixin, CreateView):
     model = Posting
-    fields = "__all__"
+    fields = (
+        'title',
+        'organization',
+        'country',
+        'region',
+        'city',
+        'hours',
+        'description',
+        )
     success_url = reverse_lazy('posting-list')
+
+    def form_valid(self, form):
+        form.instance.poster = self.request.user
+        return super(PostingCreateView, self).form_valid(form)
+    
 
 class PostingUpdateView(LoginRequiredMixin, UpdateView):
     model = Posting
@@ -44,3 +57,33 @@ class ApplicationsListView(LoginRequiredMixin, ListView):
 
 class ApplicationCreateView(LoginRequiredMixin, CreateView):
     model = Applications
+
+def apply(request):
+    if request.method == 'POST':
+        for value in request.POST:
+            print(value)
+        posting = request.POST['posting_id']
+        applicant = request.user
+        fName = request.POST['fName']
+        lName = request.POST['lName']
+        country = request.POST['country']
+        region = request.POST['region']
+        city = request.POST['city']
+        message = request.POST['message']
+
+        application = Applications(
+            posting = posting,
+            applicant = applicant,
+            firstName = fName,
+            lastName = lName,
+            country = country,
+            region = region,
+            city = city,
+            message = message,
+            status = "PENDING"
+            )
+
+        application.save()
+        return HttpResponse("Success!")
+    else:
+        return HttpResponse("Request method is not a POST")
