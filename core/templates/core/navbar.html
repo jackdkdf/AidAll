@@ -48,6 +48,17 @@
                         >Postings</a
                     >
                 </li>
+                <li class="nav-item">
+                    <a
+                    href="{% url 'posting-create' %}"
+                    class="nav-link{% if url_name == 'posting-create' %} active"
+                    aria-current="page"
+                    style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active"
+                    aria-current="page"
+                    style="font-size: medium;{% endif %}"
+                    >Create Posting</a
+                >
+            </li>
                 {% comment %} <li class="nav-item">
                     <a
                         href="{% url 'posting-day' %}"
@@ -94,7 +105,8 @@
                         {% comment %} <a class="dropdown-item" href="{% url 'Aid All-saved' %}"
                             >Saved Aid Alls</a
                         > {% endcomment %}
-                        <a class="dropdown-item" href="#">Edit Profile</a>
+                        <a class="dropdown-item" href="#">Profile Settings</a>
+                        <a class="dropdown-item" href="application-list">View Applicants</a>
                         <form
                             method="post"
                             action="{% url 'account_logout' %}"
