@@ -21,16 +21,15 @@
         </div>
     </form> {% endcomment %}
     <div class="row row-cols-auto justify-content-center">
-        <div class="list-group">
-            
+        <div class="list-group w-75">
         {% for posting in page_obj %}
             <a href="{{posting.id}}/details" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{posting.title}}, {{posting.organization}}</h5>
-                    <small>{{posting.country}},{{posting.region}},{{posting.city}}<small>
+                    <h2 class="mb-2">{{posting.title}}, {{posting.organization}}</h2>
+                    <p>{{posting.country}},{{posting.region}},{{posting.city}}</p>
                 </div>
-                <p class="mb-1">{{posting.description}}</p>
-                <small>{{posting.hours}}</small>
+                <p class="mb-1 h4">{{posting.description}}</p>
+                <p>{{posting.hours}}</p>
             </a>
         {% endfor %}
     </div>
