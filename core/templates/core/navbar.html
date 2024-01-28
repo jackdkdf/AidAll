@@ -106,7 +106,7 @@
                             >Saved Aid Alls</a
                         > {% endcomment %}
                         <a class="dropdown-item" href="#">Profile Settings</a>
-                        <a class="dropdown-item" href="application-list">View Applicants</a>
+                        <a class="dropdown-item" href="{% url 'application-list' %}">View Applicants</a>
                         <form
                             method="post"
                             action="{% url 'account_logout' %}"
