@@ -31,6 +31,7 @@ $colors: (
   "oranite": #ffd0a1,
   "off-white": #FAF9F6,
   "off-black": #0e1111,
+  "gray": #4a4a4a,
   "niagara": #{$niagara},
   );
 
@@ -50,8 +51,8 @@ $nav-pills-link-active-color: var(--bs-body-color);
     --bs-body-bg-rgb: var(--bs-off-white);
     --bs-emphasis-color: var(--bs-sunrise);
     --bs-emphasis-color-rgb: var(--bs-sunrise);
-    --bs-secondary-color: var(--bs-mauvelous);
-    --bs-secondary-color-rgb: var(--bs-mauvelous);
+    --bs-secondary-color: var(--bs-gray);
+    --bs-secondary-color-rgb: var(--bs-gray);
     --bs-secondary-bg: var(--bs-orange);
     --bs-secondary-bg-rgb: var(--bs-orange);
     --bs-tertiary-color: rgba(222, 226, 230, 0.5);

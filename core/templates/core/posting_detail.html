@@ -8,7 +8,62 @@
 {% endblock%}
 
 {% block content %}
-{{posting.title}}
+<div class="container-fluid mt-5" style="min-height: 80%;">
+    <div class="d-flex justify-content-center h-75">
+        <div class="card shadow w-50" >
+            <div class="card-body">
+                <div class="row">
+                    <div class="col text-start">
+                        <h5 class="card-title h3">{{posting.title}}</h5>
+                    </div>
+                    <div class="col text-end">
+                        <h5 class="card-title h3">{{posting.organization}}</h5>
+                    </div>
+                </div>
+                <h6 class="card-subtitle mb-3 text-muted h5">{{posting.city}}, {{posting.region}}, {{posting.country}}</h6>
+                <p class="card-text mb-3 h6">{{posting.description}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">{{posting.hours}}</h6>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="jack">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="fountain">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country" placeholder="US">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">State/Province</label>
+                                <input type="text" class="form-control" id="region" placeholder="Ontario">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">City</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Message to organization</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="resize:none;"></textarea>
+                      </div>
+                    <button class="" type="submit">Apply Now!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %} 
 
 {% block scripts %}

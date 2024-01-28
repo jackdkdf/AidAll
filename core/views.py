@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Posting
+from .models import Posting, Applications
 
 # Redirect to login page if not logged in
 # View for handling all volunteer postings
@@ -23,22 +23,24 @@ class PostingSearchView(LoginRequiredMixin, ListView):
         object_list = Posting.objects.filter(name__icontains=query)
         return object_list
 
-class PostingDetailView(DetailView):
+class PostingDetailView(LoginRequiredMixin, DetailView):
     model = Posting
 
-# TODO
-class PostingOfTheDayView(DetailView):
-    model = Posting
-
-class PostingCreateView(CreateView):
+class PostingCreateView(LoginRequiredMixin, CreateView):
     model = Posting
     fields = "__all__"
     success_url = reverse_lazy('posting-list')
 
-class PostingUpdateView(UpdateView):
+class PostingUpdateView(LoginRequiredMixin, UpdateView):
     model = Posting
     fields = "__all__"
 
-class PostingDeleteView(DeleteView):
+class PostingDeleteView(LoginRequiredMixin, DeleteView):
     model = Posting
     success_url = reverse_lazy('posting-list')
+
+class ApplicationsListView(LoginRequiredMixin, ListView):
+    model = Applications
+
+class ApplicationCreateView(LoginRequiredMixin, CreateView):
+    model = Applications
