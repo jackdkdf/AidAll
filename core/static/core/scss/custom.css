@@ -22,6 +22,7 @@
   --bs-oranite: #ffd0a1;
   --bs-off-white: #FAF9F6;
   --bs-off-black: #0e1111;
+  --bs-gray: #4a4a4a;
   --bs-niagara: #1f53ce;
   --bs-gray-100: #f8f9fa;
   --bs-gray-200: #e9ecef;
@@ -10281,8 +10282,8 @@ textarea.form-control-lg {
   --bs-body-bg-rgb: var(--bs-off-white);
   --bs-emphasis-color: var(--bs-sunrise);
   --bs-emphasis-color-rgb: var(--bs-sunrise);
-  --bs-secondary-color: var(--bs-mauvelous);
-  --bs-secondary-color-rgb: var(--bs-mauvelous);
+  --bs-secondary-color: var(--bs-gray);
+  --bs-secondary-color-rgb: var(--bs-gray);
   --bs-secondary-bg: var(--bs-orange);
   --bs-secondary-bg-rgb: var(--bs-orange);
   --bs-tertiary-color: rgba(222, 226, 230, 0.5);
