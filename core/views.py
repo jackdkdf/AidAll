@@ -26,6 +26,37 @@ class PostingSearchView(LoginRequiredMixin, ListView):
 class PostingDetailView(LoginRequiredMixin, DetailView):
     model = Posting
 
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            for value in request.POST:
+                print(value)
+            posting = 1
+            applicant = request.user
+            fName = request.POST['firstName']
+            lName = request.POST['lastName']
+            country = request.POST['country']
+            region = request.POST['region']
+            city = request.POST['city']
+            message = request.POST['message']
+
+            application = Applications(
+                posting = posting,
+                applicant = applicant,
+                firstName = fName,
+                lastName = lName,
+                country = country,
+                region = region,
+                city = city,
+                message = message,
+                status = "PENDING"
+                )
+
+            application.save()
+            return HttpResponse("Success!")
+        else:
+            return HttpResponse("Request method is not a POST")
+
+
 class PostingCreateView(LoginRequiredMixin, CreateView):
     model = Posting
     fields = (
