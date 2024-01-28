@@ -20,7 +20,7 @@ class PostingSearchView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         query = self.request.GET.get("q")
-        object_list = Posting.objects.filter(name__icontains=query)
+        object_list = Posting.objects.filter(title__icontains=query)
         return object_list
 
 class PostingDetailView(LoginRequiredMixin, DetailView):

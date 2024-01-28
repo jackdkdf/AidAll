@@ -14,18 +14,18 @@
 {% endblock%} 
 {% block content %}
 <div id="posting-list" style="padding: 0px;" class="container-fluid">
-    {% comment %} <form action="{% url 'posting-search' %}" method="get" class="form-inline">
+    <form action="{% url 'posting-search' %}" method="get" class="form-inline">
         <div class="input-group mx-auto" style="width: 30%;">
             <input name="q" type="text" class="form-control" placeholder="Search postings">
             <button class="btn btn-primary" type="submit">Search</button>
         </div>
-    </form> {% endcomment %}
+    </form>
     <div class="row row-cols-auto justify-content-center">
         <div class="list-group w-75">
         {% for posting in page_obj %}
             <a href="{{posting.id}}/details" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <h2 class="mb-2">{{posting.title}}, {{posting.organization}}</h2>
+                    <h3 class="mb-2">{{posting.title}}, {{posting.organization}}</h3>
                     <p>{{posting.country}},{{posting.region}},{{posting.city}}</p>
                 </div>
                 <p class="mb-1 h4">{{posting.description}}</p>
