@@ -91,12 +91,12 @@ class ApplicationCreateView(LoginRequiredMixin, CreateView):
 
 def apply(request):
     if request.method == 'POST':
-        for value in request.POST:
-            print(value)
-        posting = request.POST['posting_id']
+        print('test')
+        print(request.POST)
+        posting = Posting.objects.filter(id=request.POST["posting_id"])[0]
         applicant = request.user
-        fName = request.POST['fName']
-        lName = request.POST['lName']
+        fName = request.POST['firstName']
+        lName = request.POST['lastName']
         country = request.POST['country']
         region = request.POST['region']
         city = request.POST['city']
@@ -113,6 +113,9 @@ def apply(request):
             message = message,
             status = "PENDING"
             )
+        
+        print("OBJECT CREATED")
+        print("OBJECT CREATED")
 
         application.save()
         return HttpResponse("Success!")
