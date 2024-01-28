@@ -25,10 +25,10 @@
         {% for posting in page_obj %}
             <a href="{{posting.id}}/details" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <h3 class="mb-2">{{posting.title}}, {{posting.organization}}</h3>
+                    <h4 class="mb-2">{{posting.title}}, {{posting.organization}}</h3>
                     <p>{{posting.country}},{{posting.region}},{{posting.city}}</p>
                 </div>
-                <p class="mb-1 h4">{{posting.description}}</p>
+                <p class="mb-1 h5">{{posting.description}}</p>
                 <p>{{posting.hours}}</p>
             </a>
         {% endfor %}

@@ -85,6 +85,7 @@ class PostingDeleteView(LoginRequiredMixin, DeleteView):
 
 class ApplicationsListView(LoginRequiredMixin, ListView):
     model = Applications
+    paginate_by = 15
 
 class ApplicationCreateView(LoginRequiredMixin, CreateView):
     model = Applications
