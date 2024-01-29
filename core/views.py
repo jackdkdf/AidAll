@@ -63,10 +63,12 @@ class ApplicationsListView(LoginRequiredMixin, ListView):
 class ApplicationCreateView(LoginRequiredMixin, CreateView):
     model = Applications
 
+# Handle Ajax POST Request for creating applications
+# Takes FormData from apply-form in posting_detail.html
+# Respective fields are set based on the data sent in the POST request -
+# the name of the form element corresponds to the key of the value in the POST dictionary
 def apply(request):
     if request.method == 'POST':
-        print('test')
-        print(request.POST)
         posting = Posting.objects.filter(id=request.POST["posting_id"])[0]
         applicant = request.user
         fName = request.POST['firstName']
@@ -75,23 +77,33 @@ def apply(request):
         region = request.POST['region']
         city = request.POST['city']
         message = request.POST['message']
-
-        application = Applications(
-            posting = posting,
-            applicant = applicant,
-            firstName = fName,
-            lastName = lName,
-            country = country,
-            region = region,
-            city = city,
-            message = message,
-            status = "PENDING"
-            )
-        
-        print("OBJECT CREATED")
-        print("OBJECT CREATED")
-
-        application.save()
-        return HttpResponse("Success!")
+        existing_app = Applications.objects.filter(posting=posting, applicant=applicant)
+        print(len(existing_app))
+        if len(existing_app) == 0:
+            application = Applications(
+                posting = posting,
+                applicant = applicant,
+                firstName = fName,
+                lastName = lName,
+                country = country,
+                region = region,
+                city = city,
+                message = message,
+                status = "PENDING"
+                )
+            
+            application.save()
+            return HttpResponse("Created application!")
+        else:
+            print("Updating application")
+            existing_app = existing_app[0]
+            existing_app.firstName = fName
+            existing_app.lastName = lName
+            existing_app.country = country
+            existing_app.region = region
+            existing_app.city = city
+            existing_app.message = message
+            existing_app.save()
+            return HttpResponse("Updated application!")
     else:
         return HttpResponse("Request method is not a POST")
