@@ -6,132 +6,44 @@
 </head>
 
 <body data-bs-theme="miami" style="overscroll-behavior: none">
-    <div
-        class="container-fluid"
-        style="
-            background: linear-gradient(
-                90deg,
-                var(--bs-secondary-bg),
-                var(--bs-emphasis-color)
-            );
-        "
-    >
-        <header
-            class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 ps-3 pe-6 border-bottom border-3"
-        >
-            <a
-                href="{% url 'posting-list' %}"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-            >
-                <img
-                    class="bi me-2"
-                    width="40"
-                    height="40"
-                    src="{% static 'core/img/logo.png' %}"
-                />
+    <div class="container-fluid" style="background: linear-gradient(90deg, var(--bs-secondary-bg), var(--bs-emphasis-color));">
+        <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 ps-3 pe-6 border-bottom border-3">
+            <a href="{% url 'posting-list' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="bi me-2" width="40" height="40" src="{% static 'core/img/logo.png' %}"/>
                 <span class="fs-4">Aid All</span>
             </a>
 
             <!-- Check for current active url, set active navbar item -->
             {% with request.resolver_match.url_name as url_name %}
-            <ul
-                class="nav nav-pills navbar-padding align-items-center justify-content-center"
-            >
+            <ul class="nav nav-pills navbar-padding align-items-center justify-content-center">
                 <li class="nav-item">
-                    <a
-                        href="{% url 'posting-list' %}"
-                        class="nav-link{% if url_name == 'posting-list' %} active"
-                        aria-current="page"
-                        style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active"
-                        aria-current="page"
-                        style="font-size: medium;{% endif %}"
-                        >Postings</a
-                    >
+                    <a href="{% url 'posting-list' %}" class="nav-link{% if url_name == 'posting-list' %} active" aria-current="page" style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active" aria-current="page" style="font-size: medium;{% endif %}">Postings</a>
                 </li>
                 <li class="nav-item">
-                    <a
-                    href="{% url 'posting-create' %}"
-                    class="nav-link{% if url_name == 'posting-create' %} active"
-                    aria-current="page"
-                    style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active"
-                    aria-current="page"
-                    style="font-size: medium;{% endif %}"
-                    >Create Posting</a
-                >
-            </li>
-                {% comment %} <li class="nav-item">
-                    <a
-                        href="{% url 'posting-day' %}"
-                        class="nav-link{% if url_name == 'posting-day' %} active"
-                        aria-current="page"
-                        style="font-size: medium;{% endif %}"
-                        >ROTD</a
-                    >
+                    <a href="{% url 'posting-create' %}" class="nav-link{% if url_name == 'posting-create' %} active" aria-current="page" style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active" aria-current="page" style="font-size: medium;{% endif %}">Create Posting</a>
                 </li>
-                <li class="nav-item">
-                    <a
-                        href="{% url 'Aid All-cart' %}"
-                        class="nav-link{% if url_name == 'Aid All-cart' %} active"
-                        aria-current="page"
-                        style="font-size: medium;{% endif %}"
-                        >Cart (<span id="cart-count">0</span>)</a
-                    >
-                </li> {% endcomment %}
                 {% endwith %}
-                <li
-                    class="nav-item dropdown align-items-center justify-content-center ms-2"
-                >
-                    <a
-                        class="dropdown-toggle align-items-center link-body-emphasis text-decoration-none"
-                        href="#"
-                        id="navbarDropdownMenuLink"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                    >
-                        <img
-                            src="{{ user.socialaccount_set.all.0.get_avatar_url }}"
-                            width="32"
-                            height="32"
-                            class="bi rounded-circle"
-                        />
+                <li class="nav-item dropdown align-items-center justify-content-center ms-2">
+                    <a class="dropdown-toggle align-items-center link-body-emphasis text-decoration-none" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="32" height="32" class="bi rounded-circle"/>
                     </a>
-                    <div
-                        class="dropdown-menu mt-3"
-                        aria-labelledby="navbarDropdownMenuLink"
-                        style="border: 1px solid black"
-                    >
-                        {% comment %} <a class="dropdown-item" href="{% url 'Aid All-saved' %}"
-                            >Saved Aid Alls</a
-                        > {% endcomment %}
+                    <div class="dropdown-menu mt-3" aria-labelledby="navbarDropdownMenuLink" style="border: 1px solid black">
                         <a class="dropdown-item" href="#">Profile Settings</a>
                         <a class="dropdown-item" href="{% url 'application-list' %}">View Applicants</a>
-                        <form
-                            method="post"
-                            action="{% url 'account_logout' %}"
-                            class="m-0"
-                        >
-                            {% csrf_token %} {% if redirect_field_value %}
-                            <input
-                                type="hidden"
-                                name="{{ redirect_field_name }}"
-                                value="{{ redirect_field_value }}"
-                            />
-                            {% endif %}
-                            <button class="dropdown-item" type="submit">
-                                Logout
-                            </button>
+                        <form method="post" action="{% url 'account_logout' %}" class="m-0">
+                            {% csrf_token %}
+                            <button class="dropdown-item" type="submit"> Logout</button>
                         </form>
                     </div>
                 </li>
             </ul>
         </header>
     </div>
-
-    {% block content %}
-    <!-- Insert actual webpage content here -->
-    {% endblock %}
 </body>
 
-{% block scripts %} {% endblock %}
+{% block content %}
+<!-- Insert actual webpage content here -->
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}
