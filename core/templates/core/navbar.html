@@ -5,7 +5,7 @@
     {% block bscss %} {% endblock %}
 </head>
 
-<body data-bs-theme="light" class="vh-100 overflow-hidden" style="overscroll-behavior: none; background-image: url({% static 'core/img/login_background2.webp' %}); background-size: cover; background-repeat: no-repeat; background-position: center top">
+<body data-bs-theme="light" class="vh-100" style="overscroll-behavior: none; background-image: url({% static 'core/img/login_background2.webp' %}); background-size: cover; background-repeat: no-repeat; background-position: center top">
     <nav class="navbar navbar-expand-lg sticky-top bg-light navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-4" href="{% url 'posting-list' %}">AID ALL</a>
@@ -21,8 +21,8 @@
                         <a class="nav-link" href="{% url 'posting-create' %}">Create Posting</a>
                     </li>
                 </ul>
-                <form class="d-flex mb-lg-0" style="width: 25%;">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form action={% block searchlink %}{% endblock %} class="d-flex mb-lg-0" style="width: 25%;">
+                    <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div class="ms-4 me-3 dropdown">

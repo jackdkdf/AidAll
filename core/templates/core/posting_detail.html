@@ -8,6 +8,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 {% endblock%}
 
+{% block searchlink %}
+{% url 'posting-search' %}
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid mt-5">
     <div class="d-flex justify-content-center">
