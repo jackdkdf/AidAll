@@ -5,29 +5,31 @@
     {% block bscss %} {% endblock %}
 </head>
 
-<body data-bs-theme="miami" style="overscroll-behavior: none">
-    <div class="container-fluid" style="background: linear-gradient(90deg, var(--bs-secondary-bg), var(--bs-emphasis-color));">
-        <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 ps-3 pe-6 border-bottom border-3">
-            <a href="{% url 'posting-list' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="bi me-2" width="40" height="40" src="{% static 'core/img/logo.png' %}"/>
-                <span class="fs-4">Aid All</span>
-            </a>
-
-            <!-- Check for current active url, set active navbar item -->
-            {% with request.resolver_match.url_name as url_name %}
-            <ul class="nav nav-pills navbar-padding align-items-center justify-content-center">
-                <li class="nav-item">
-                    <a href="{% url 'posting-list' %}" class="nav-link{% if url_name == 'posting-list' %} active" aria-current="page" style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active" aria-current="page" style="font-size: medium;{% endif %}">Postings</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'posting-create' %}" class="nav-link{% if url_name == 'posting-create' %} active" aria-current="page" style="font-size: medium;{% endif %}{% if url_name == 'posting-search' %} active" aria-current="page" style="font-size: medium;{% endif %}">Create Posting</a>
-                </li>
-                {% endwith %}
-                <li class="nav-item dropdown align-items-center justify-content-center ms-2">
+<body data-bs-theme="light" class="vh-100 overflow-hidden" style="overscroll-behavior: none; background-image: url({% static 'core/img/login_background2.webp' %}); background-size: cover; background-repeat: no-repeat; background-position: center top">
+    <nav class="navbar navbar-expand-lg sticky-top bg-light navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-4" href="{% url 'posting-list' %}">AID ALL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'posting-list' %}">Postings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'posting-create' %}">Create Posting</a>
+                    </li>
+                </ul>
+                <form class="d-flex mb-lg-0" style="width: 25%;">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <div class="ms-4 me-3 dropdown">
                     <a class="dropdown-toggle align-items-center link-body-emphasis text-decoration-none" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="32" height="32" class="bi rounded-circle"/>
                     </a>
-                    <div class="dropdown-menu mt-3" aria-labelledby="navbarDropdownMenuLink" style="border: 1px solid black">
+                    <div class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="navbarDropdownMenuLink" style="border: 1px solid black">
                         <a class="dropdown-item" href="#">Profile Settings</a>
                         <a class="dropdown-item" href="{% url 'application-list' %}">View Applicants</a>
                         <form method="post" action="{% url 'account_logout' %}" class="m-0">
@@ -35,10 +37,10 @@
                             <button class="dropdown-item" type="submit"> Logout</button>
                         </form>
                     </div>
-                </li>
-            </ul>
-        </header>
-    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </body>
 
 {% block content %}

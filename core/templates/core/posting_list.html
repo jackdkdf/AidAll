@@ -13,21 +13,15 @@
 <link rel="stylesheet" href="{% static 'core/scss/custom.css' %}" />
 {% endblock%} 
 {% block content %}
-<div id="posting-list"class="container-fluid">
-    <form action="{% url 'posting-search' %}" method="get" class="form-inline">
-        <div class="input-group mx-auto" style="width: 30%;">
-            <input name="q" type="text" class="form-control" placeholder="Search postings">
-            <button class="btn btn-primary" type="submit">Search</button>
-        </div>
-    </form>
+<div id="posting-list"class="container-fluid overflow-scroll">
     <div class="row row-cols-2 justify-content-center align-items-center ms-auto me-auto mt-4">
         {% for posting in page_obj %}
             <div class="col w-50 mb-4">
-                <div class="card shadow border border-dark">
+                <div class="card shadow border border-dark" style="background-color: rgba(255, 255, 255, 0.7); height: ">
                     <div class="card-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-3">
                                     <h5 class="card-title">{{posting.title}}</h5>
                                     <h6>{{posting.organization}}</h6>
                                     <h6>{{posting.city}}, {{posting.region}}, {{posting.country}}</h6>
@@ -44,6 +38,7 @@
             </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
 {% block scripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

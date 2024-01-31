@@ -10274,22 +10274,22 @@ textarea.form-control-lg {
 /*
 
 */
-[data-bs-theme=miami] {
-  color-scheme: miami;
-  --bs-body-color: var(--bs-off-black);
-  --bs-body-color-rgb: var(--bs-off-black);
-  --bs-body-bg: var(--bs-off-white);
-  --bs-body-bg-rgb: var(--bs-off-white);
-  --bs-emphasis-color: var(--bs-sunrise);
-  --bs-emphasis-color-rgb: var(--bs-sunrise);
-  --bs-secondary-color: var(--bs-gray);
-  --bs-secondary-color-rgb: var(--bs-gray);
-  --bs-secondary-bg: var(--bs-orange);
-  --bs-secondary-bg-rgb: var(--bs-orange);
+[data-bs-theme=mint] {
+  color-scheme: mint;
+  --bs-body-color: var(--bs-raisin-black);
+  --bs-body-color-rgb: var(--bs-raisin-black);
+  --bs-body-bg: var(--bs-verdigris);
+  --bs-body-bg-rgb: var(--bs-verdigris);
+  --bs-emphasis-color: var(--bs-verdigris);
+  --bs-emphasis-color-rgb: var(--bs-verdigris);
+  --bs-secondary-color: var(--bs-tiffany-blue);
+  --bs-secondary-color-rgb: var(--bs-tiffany-blue);
+  --bs-secondary-bg: var(--bs-tiffany-blue);
+  --bs-secondary-bg-rgb: var(--bs-tiffany-blue);
   --bs-tertiary-color: rgba(222, 226, 230, 0.5);
   --bs-tertiary-color-rgb: 222, 226, 230;
-  --bs-tertiary-bg: var(--bs-oranite);
-  --bs-tertiary-bg-rgb: var(--bs-oranite);
+  --bs-tertiary-bg: var(--bs-mint-cream);
+  --bs-tertiary-bg-rgb: var(--bs-mint-cream);
   --bs-primary-text-emphasis: #6ea8fe;
   --bs-secondary-text-emphasis: #a7acb1;
   --bs-success-text-emphasis: #75b798;
@@ -10314,21 +10314,21 @@ textarea.form-control-lg {
   --bs-danger-border-subtle: #842029;
   --bs-light-border-subtle: #495057;
   --bs-dark-border-subtle: #343a40;
-  --bs-heading-color: var(--bs-baltic-sea);
-  --bs-link-color: var(--bs-rose-bud);
-  --bs-link-hover-color: var(--bs-rose-bud-300);
-  --bs-link-color-rgb: var(--bs-rose-bud);
-  --bs-link-hover-color-rgb: var(--bs-rose-bud-300);
+  --bs-heading-color: var(--bs-wenge);
+  --bs-link-color: var(--bs-wenge);
+  --bs-link-hover-color: var(--bs-wenge-300);
+  --bs-link-color-rgb: var(--bs-wenge);
+  --bs-link-hover-color-rgb: var(--bs-wenge-300);
   --bs-nav-pills-link-active-color: var(--bs-red);
   --bs-nav-tabs-link-active-color: #842029;
   --bs-nav-underline-link-active-color: #842029;
   --bs-nav-pills-link-active-bg: #842029;
-  --bs-nav-tabs-link-active-bg: var(--bs-wedge-wood);
-  --bs-nav-tabs-link-active-border-color: var(--bs-wedge-wood);
-  --bs-code-color: var(--bs-coral);
+  --bs-nav-tabs-link-active-bg: var(--bs-wenge);
+  --bs-nav-tabs-link-active-border-color: var(--bs-wenge);
+  --bs-code-color: #e685b5;
   --bs-highlight-color: #dee2e6;
   --bs-highlight-bg: #664d03;
-  --bs-border-color: var(--bs-coral);
+  --bs-border-color: #fff;
   --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
   --bs-form-valid-color: #75b798;
   --bs-form-valid-border-color: #75b798;
@@ -10436,6 +10436,14 @@ textarea.form-control-lg {
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+#mainNavigation a {
+  font-family: "Cabin", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 /*# sourceMappingURL=custom.css.map */
