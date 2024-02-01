@@ -32,23 +32,20 @@
                 <form method="POST" class="apply-form" id="apply-form">
                     {% csrf_token %}
                     <input type="hidden" value="{{posting.id}}" name="posting_id" id="posting_id">
-                    <div class="mb-3">
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Jack">
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="John">
                             </div>
                             <div class="col">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Fountain">
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Smith">
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label">Country</label>
-                                <input type="text" class="form-control" name="country" id="country" placeholder="US" maxlength="2" minlength="2">
+                                <input type="text" class="form-control" name="country" id="country" placeholder="CA" maxlength="2" minlength="2">
                             </div>
                             <div class="col">
                                 <label class="form-label">State/Province</label>
@@ -56,10 +53,9 @@
                             </div>
                             <div class="col">
                                 <label class="form-label">City</label>
-                                <input type="text" class="form-control" name="city" id="city" placeholder="toronto">
+                                <input type="text" class="form-control" name="city" id="city" placeholder="Toronto">
                             </div>
                         </div>
-                      </div>
                       <div class="mb-3">
                         <label class="form-label">Message to organization</label>
                         <textarea class="form-control" name="message" id="message" rows="3" style="resize:none;"></textarea>

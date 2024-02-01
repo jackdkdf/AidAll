@@ -7,42 +7,60 @@
 <link rel="stylesheet" href="{% static 'core/scss/custom.css' %}" />
 {% endblock%}
 
+{% block searchlink %}
+{% url 'posting-search' %}
+{% endblock %}
+
 {% block content %}
-<div class="d-flex justify-content-center">
-    <form class="row g-3 w-75" method="POST" enctype="mjkhgfa">
-    {% csrf_token %}
-    <div class="col-md-6 mt-2">
-      <label class="form-label">Title</label>
-      <input name="title" maxlength="100" type="text" required="" class="form-control" id="id_title" placeholder="Cashier Volunteer">
-    </div>
-    <div class="col-md-6 mt-2">
-      <label  class="form-label">Organization Name</label>
-      <input name="organization" type="text" class="form-control" id="id_organization" maxlength="100" required=""  placeholder="Aid All">
-    </div>
-    <div class="col-md-2 mt-4">
-      <label class="form-label">Country</label>
-      <input name="country" type="text" maxlength="2" minlength="2" class="form-control" id="id_country" placeholder="CA">
-    </div>
-      <div class="col-md-2 mt-4">
-        <label class="form-label">Region</label>
-      <input name="region" type="text" class="form-control" maxlength="25"  id="id_region" placeholder="Ontario">
-    </div>
-      <div class="col-md-2 mt-4">
-      <label class="form-label">City</label>
-      <input name="city" type="text" class="form-control" id="id_city" placeholder="Ottawa">
+<div class="container-fluid mt-5">
+  <div class="d-flex justify-content-center">
+    <div class="card w-50">
+      <div class="card-body">
+        <h5 class="card-title h3">CREATE POSTING</h5>
+        <form method="POST" enctype="mjkhgfa">
+          {% csrf_token %}
+          <div class="row mb-3">
+            <div class="col">
+              <label class="form-label">Title</label>
+              <input name="title" maxlength="100" type="text" required="" class="form-control" id="id_title" placeholder="Tree Planting">
+            </div>
+            <div class="col">
+              <label  class="form-label">Organization Name</label>
+              <input name="organization" type="text" class="form-control" id="id_organization" maxlength="100" required=""  placeholder="Aid All">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col mt-2">
+              <label class="form-label">Country</label>
+              <input name="country" type="text" maxlength="2" minlength="2" class="form-control" id="id_country" placeholder="CA">
+            </div>
+            <div class="col">
+              <label class="form-label">Region</label>
+              <input name="region" type="text" class="form-control" maxlength="25"  id="id_region" placeholder="Ontario">
+            </div>
+            <div class="col">
+              <label class="form-label">City</label>
+              <input name="city" type="text" class="form-control" id="id_city" placeholder="Ottawa">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label">Description</label>
+              <textarea name="description" style="resize: none;" rows=3 type="text" class="form-control" id="id_description" placeholder="Description of what the volunteer tasks are."></textarea>
+            </div>
+          </div>
+
+            <div class="col-12">
+              <label class="form-label">Hours</label>
+              <input name="hours" type="text" class="form-control" id="id_hours" placeholder="3pm-6pm every Friday,">
+            </div>
+            <div class="d-flex justify-content-center" >
+              <button type="submit" class="btn btn-primary mt-2 col-2 justify-content-center">Submit</button>
+            </div>
+        </form>
       </div>
-      <div class="col-12 mt-4">
-        <label class="form-label">Description</label>
-        <input name="description" type="text" class="form-control" id="id_description" placeholder="Deal with customers, and helps them with purchases.">
-      </div>
-      <div class="col-12 mt-4">
-        <label class="form-label">Hours</label>
-        <input name="hours" type="text" class="form-control" id="id_hours" placeholder="Deal with customers, and helps them with purchases.">
-      </div>
-      <div class="d-flex justify-content-center" >
-      <button type="submit" class="btn btn-primary mt-2 col-2 justify-content-center">Submit</button>
-      </div>
-  </form>
+    </div>
+  </div>
 </div>
 {% endblock %} 
 
