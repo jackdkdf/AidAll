@@ -59,8 +59,12 @@ class ApplicationsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         object_list = Applications.objects.filter(posting__poster=self.request.user)
         return object_list
+    
+class ApplicationsDetailView(LoginRequiredMixin, DetailView):
+    model = Applications
+    exclude = ['']
 
-class ApplicationCreateView(LoginRequiredMixin, CreateView):
+class ApplicationsCreateView(LoginRequiredMixin, CreateView):
     model = Applications
 
 # Handle Ajax POST Request for creating applications
