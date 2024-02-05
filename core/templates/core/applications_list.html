@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="{% static 'core/scss/custom.css' %}" />
 {% endblock%}
 
+{% block searchlink %}
+{% url 'applicant-search' %}
+{% endblock %}
+
 {% block content %}
 <div id="applications-list" style="padding: 0px;" class="container-fluid">
     {% comment %} <form action="{% url 'applications-search' %}" method="get" class="form-inline">

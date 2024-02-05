@@ -1,4 +1,5 @@
-from django.http import HttpRequest, HttpResponse
+from django.db.models.query import QuerySet
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -60,9 +61,19 @@ class ApplicationsListView(LoginRequiredMixin, ListView):
         object_list = Applications.objects.filter(posting__poster=self.request.user)
         return object_list
     
+class ApplicationsSearchView(LoginRequiredMixin, ListView):
+    model = Applications
+    paginate_by = 15
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Applications.objects.filter(posting__poster=self.request.user, message__icontains=query)
+        return object_list
+    
 class ApplicationsDetailView(LoginRequiredMixin, DetailView):
     model = Applications
     exclude = ['']
+
 
 class ApplicationsCreateView(LoginRequiredMixin, CreateView):
     model = Applications
