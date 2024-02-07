@@ -24,6 +24,15 @@ class PostingSearchView(LoginRequiredMixin, ListView):
         object_list = Posting.objects.filter(title__icontains=query)
         return object_list
 
+class MyPostingListView(LoginRequiredMixin, ListView):
+    model = Posting
+    paginate_by = 15
+    template_name = "/core/posting_list.html"
+
+    def get_queryset(self):
+        object_list = Posting.objects.filter(poster=self.request.user)
+        return object_list
+
 class PostingDetailView(LoginRequiredMixin, DetailView):
     model = Posting
 
